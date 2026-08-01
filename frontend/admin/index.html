@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>TECHNOVA '26 - Admin Dashboard</title>
+
+    <link
+        rel="stylesheet"
+        href="admin.css"
+    >
+
+</head>
+
+<body>
+
+    <!-- ================= SIDEBAR ================= -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+
+            <div class="logo-icon">
+                T
+            </div>
+
+            <div>
+                <h2>TECHNOVA</h2>
+                <span>ADMIN PANEL</span>
+            </div>
+
+        </div>
+
+
+        <nav>
+
+            <a
+                href="#dashboard"
+                class="nav-link active"
+            >
+                <span>📊</span>
+                Dashboard
+            </a>
+
+            <a
+                href="#registrations"
+                class="nav-link"
+            >
+                <span>👥</span>
+                Registrations
+            </a>
+
+            <a
+                href="#events"
+                class="nav-link"
+            >
+                <span>🎯</span>
+                Events
+            </a>
+
+
+        </nav>
+        
+
+
+        <div class="sidebar-bottom">
+
+            <a
+                href="/"
+                class="back-link"
+            >
+                ← Registration Website
+            </a>
+
+        </div>
+
+    </aside>
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="main">
+
+        <!-- HEADER -->
+
+        <header class="topbar">
+
+            <div>
+
+                <h1>
+                    Admin Dashboard
+                </h1>
+
+                <p>
+                    TECHNOVA '26 Registration Management
+                </p>
+
+            </div>
+
+
+            <div class="admin-info">
+
+                <div class="admin-avatar">
+                    A
+                </div>
+
+                <div>
+
+                    <strong>
+                        Administrator
+                    </strong>
+
+                    <small>
+                        Event Manager
+                    </small>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- ================= DASHBOARD ================= -->
+
+        <section id="dashboard">
+
+            <!-- STATISTICS -->
+
+            <div class="stats-grid">
+
+                <div class="stat-card">
+
+                    <div class="stat-icon blue">
+                        👥
+                    </div>
+
+                    <div>
+
+                        <span>
+                            Total Registrations
+                        </span>
+
+                        <h2 id="totalRegistrations">
+                            0
+                        </h2>
+
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon green">
+                        👤
+                    </div>
+
+                    <div>
+
+                        <span>
+                            Individual
+                        </span>
+
+                        <h2 id="individualCount">
+                            0
+                        </h2>
+
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon purple">
+                        👥
+                    </div>
+
+                    <div>
+
+                        <span>
+                            Team
+                        </span>
+
+                        <h2 id="teamCount">
+                            0
+                        </h2>
+
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon orange">
+                        🎯
+                    </div>
+
+                    <div>
+
+                        <span>
+                            Events
+                        </span>
+
+                        <h2 id="eventCount">
+                            0
+                        </h2>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- EVENT SUMMARY -->
+
+            <div class="content-grid">
+
+                <div class="card">
+
+                    <div class="card-header">
+
+                        <div>
+
+                            <h2>
+                                Event-wise Registrations
+                            </h2>
+
+                            <p>
+                                Registration distribution
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div id="eventSummary">
+
+                        <div class="loading">
+                            Loading events...
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- QUICK INFO -->
+
+                <div class="card">
+
+                    <div class="card-header">
+
+                        <div>
+
+                            <h2>
+                                Registration Overview
+                            </h2>
+
+                            <p>
+                                Current statistics
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="overview">
+
+                        <div class="overview-item">
+
+                            <span>
+                                Individual
+                            </span>
+
+                            <strong id="individualPercentage">
+                                0%
+                            </strong>
+
+                        </div>
+
+
+                        <div class="progress">
+
+                            <div
+                                id="individualProgress"
+                                class="progress-bar"
+                            ></div>
+
+                        </div>
+
+
+                        <div class="overview-item">
+
+                            <span>
+                                Team
+                            </span>
+
+                            <strong id="teamPercentage">
+                                0%
+                            </strong>
+
+                        </div>
+
+
+                        <div class="progress">
+
+                            <div
+                                id="teamProgress"
+                                class="progress-bar team-progress"
+                            ></div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= REGISTRATIONS ================= -->
+
+        <section
+            id="registrations"
+            class="registrations-section"
+        >
+
+            <div class="card">
+
+                <div class="card-header registrations-header">
+
+                    <div>
+
+                        <h2>
+                            All Registrations
+                        </h2>
+
+                        <p>
+                            Manage registered participants
+                        </p>
+
+                    </div>
+
+
+                    <button
+                        id="exportBtn"
+                        class="export-btn"
+                    >
+                        ↓ Export CSV
+                    </button>
+
+                </div>
+
+
+                <!-- SEARCH -->
+
+                <div class="filters">
+
+                    <div class="search-box">
+
+                        <span>
+                            🔍
+                        </span>
+
+                        <input
+                            type="text"
+                            id="searchInput"
+                            placeholder="Search by name, email, phone or registration number..."
+                        >
+
+                    </div>
+
+
+                    <select id="eventFilter">
+
+                        <option value="">
+                            All Events
+                        </option>
+
+                    </select>
+
+
+                    <select id="typeFilter">
+
+                        <option value="">
+                            All Types
+                        </option>
+
+                        <option value="Individual">
+                            Individual
+                        </option>
+
+                        <option value="Team">
+                            Team
+                        </option>
+
+                    </select>
+
+
+                    <button
+                        id="refreshBtn"
+                        class="refresh-btn"
+                    >
+                        ↻ Refresh
+                    </button>
+
+                </div>
+
+
+                <!-- TABLE -->
+
+                <div class="table-container">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    Registration No.
+                                </th>
+
+                                <th>
+                                    Participant
+                                </th>
+
+                                <th>
+                                    Contact
+                                </th>
+
+                                <th>
+                                    College
+                                </th>
+
+                                <th>
+                                    Event
+                                </th>
+
+                                <th>
+                                    Type
+                                </th>
+
+                                <th>
+                                    Transaction ID
+                                </th>
+
+                                <th>
+                                    Date
+                                </th>
+
+                                <th>
+                                    Action
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody id="registrationTable">
+
+                            <tr>
+
+                                <td
+                                    colspan="9"
+                                    class="loading"
+                                >
+                                    Loading registrations...
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+
+                <div
+                    id="emptyState"
+                    class="empty-state hidden"
+                >
+
+                    <div>
+                        🔍
+                    </div>
+
+                    <h3>
+                        No registrations found
+                    </h3>
+
+                    <p>
+                        Try changing your search or filters.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= EVENTS ================= -->
+
+        <section
+            id="events"
+            class="events-section"
+        >
+
+            <div class="card">
+
+                <div class="card-header">
+
+                    <div>
+
+                        <h2>
+                            Event Statistics
+                        </h2>
+
+                        <p>
+                            Registration count for each event
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div id="eventCards"
+                     class="event-cards">
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- ================= MODAL ================= -->
+
+    <div
+        id="detailsModal"
+        class="modal hidden"
+    >
+
+        <div class="modal-content">
+
+            <button
+                id="closeModal"
+                class="close-modal"
+            >
+                ×
+            </button>
+
+
+            <h2>
+                Registration Details
+            </h2>
+
+
+            <div id="registrationDetails">
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script src="admin.js"></script>
+
+</body>
+
+</html>
